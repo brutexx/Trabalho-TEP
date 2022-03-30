@@ -64,7 +64,7 @@ typedef struct Matriz_st  Matriz_t;
 
 struct Matriz_Interface_st {
 
-  void (*imprime) (Matriz_t const * const me);
+  char * (*imprime) (Matriz_t const * const me);
 
   double (*get) (Matriz_t const * const me,
                  int                    lin,
