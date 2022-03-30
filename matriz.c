@@ -114,6 +114,9 @@ static  void destroi_ (Numero_t * me);
  * funcoes da classe virtual básica número                 *
  * protótipos das funçoes get e set, por exemplo           *
  *---------------------------------------------------------*/
+
+static void Imprime_ (Matriz_t * me);
+
 static double Get_ (Matriz_t const * const me,
                     int                    lin,
                     int                    col);
@@ -275,6 +278,20 @@ Matriz_pt Matriz_2d_criar (Matriz_pt  me,
  /*---------------------------------------------*
  * implementação do set e get                   *
  * ---------------------------------------------*/
+
+static void Imprime_ (Matriz_t * me) 
+{
+  printf("[");
+  for (int l = 0; l < Qtd_Linhas_(me); l++) 
+  {
+    if (l) printf("\n");
+    for (int c = 0; c < Qtd_Colunas_(me); c++) 
+    {
+      printf("%lf ", Get_(me, l, c));
+    }
+  }
+  printf("]");
+}
 
 static inline 
 double Get_ (Matriz_t const * const me,
