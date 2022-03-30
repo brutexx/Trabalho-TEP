@@ -63,42 +63,9 @@ typedef struct Matriz_st  Matriz_t;
 
 
 struct Matriz_Interface_st {
-	Matriz_pt (*copia)	(Matriz_t const * const me);
 
-  Matriz_pt (*atribui)	(Matriz_t const * const me,
-                           Matriz_t       * const outro);
+  void (*imprime) (Matriz_t const * const me);
 
-  Matriz_pt (*soma)	(Matriz_t const * const me,
-                       Matriz_t const * const outro,
-                       Matriz_t       * const res);
-
-  Matriz_pt (*subt)	(Matriz_t const * const me,
-                       Matriz_t const * const outro,
-                       Matriz_t       * const res);
-
-  Matriz_pt (*mult)	(Matriz_t const * const me,
-                       Matriz_t const * const outro,
-                       Matriz_t       * const res);
-
-  Matriz_pt (*ac_soma)	(Matriz_t       * const me,
-                           Matriz_t const * const outro);
-
-  Matriz_pt (*ac_subt)	(Matriz_t       * const me,
-                           Matriz_t const * const outro);
-
-  Matriz_pt (*ac_mult)	(Matriz_t       * const me,
-                           Matriz_t const * const outro);
-
-  Matriz_pt (*ac_divd)	(Matriz_t       * const me,
-                           Matriz_t const * const outro);
-
-  int			(*compara)	(Matriz_t const * const  me, //Mudar isso
-                       Matriz_t const * const  outro);
-
-  char *      (*imprime)  (Matriz_t const * const  me);
-
-  void        (*destroi)  (Matriz_t       *        me);
-  /*------------------------------------------------------*/
   double (*get) (Matriz_t const * const me,
                  int                    lin,
                  int                    col);
