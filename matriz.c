@@ -115,7 +115,7 @@ static  void destroi_ (Numero_t * me);
  * protótipos das funçoes get e set, por exemplo           *
  *---------------------------------------------------------*/
 
-static void Imprime_ (Matriz_t * me);
+static char * Imprime_ (Matriz_t * me);
 
 static double Get_ (Matriz_t const * const me,
                     int                    lin,
@@ -205,6 +205,7 @@ Matriz_pt Matriz_2d_criar (Matriz_pt  me,
       * "Matriz_t": a tabela de interface                          *
       * note que a estrutura Interface incorpora os métodos Get e Set */
      static struct Matriz_Interface_st const interface = {
+        &Imprime,
         &Get_,
         &Set_,
         &Resize_,
@@ -279,18 +280,21 @@ Matriz_pt Matriz_2d_criar (Matriz_pt  me,
  * implementação do set e get                   *
  * ---------------------------------------------*/
 
-static void Imprime_ (Matriz_t * me) 
+static char * Imprime_ (Matriz_t * me) 
 {
-  printf("[");
+  char buffer[50] = "[";
+  
   for (int l = 0; l < Qtd_Linhas_(me); l++) 
   {
-    if (l) printf("\n");
+    if (l) sprintf(buffer, "%s\n", buffer);
     for (int c = 0; c < Qtd_Colunas_(me); c++) 
     {
-      printf("%lf ", Get_(me, l, c));
+      sprintf(buffer, "%s%lf ", buffer, Get_(me, l, c));
     }
   }
-  printf("]");
+  if (l) sprintf(buffer, "%s]", buffer);;
+
+  return buffer;
 }
 
 static inline 
